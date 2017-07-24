@@ -1,0 +1,34 @@
+---
+
+- name: Test Prometheus Node Exporter role
+  hosts: all
+
+  pre_tasks:
+    - name: Update apt
+      become: yes
+      apt:
+        cache_valid_time: 1800
+        update_cache: yes
+      tags:
+        - build
+
+  roles:
+    - role: sansible.prometheus_node_exporter
+
+  post_tasks:
+    - name: Get Prometheus Node Exporter service state
+      become: yes
+      service:
+        name: prometheus-node-exporter
+        state: started
+      register: status
+      tags:
+        - assert
+
+    - name: Assert that Prometheus Node Exporter has been running
+      assert:
+        that:
+          - "false == status.changed"
+          - "'started' == status.state"
+      tags:
+        - assert
