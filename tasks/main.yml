@@ -1,0 +1,6 @@
+---
+
+- name: Install Prometheus
+  include: build.yml
+  tags:
+    - build
