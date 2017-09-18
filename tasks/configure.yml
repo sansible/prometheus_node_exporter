@@ -1,0 +1,8 @@
+---
+
+- name: Prometheus Node Exporter service start
+  become: yes
+  service:
+    name: prometheus-node-exporter
+    state: started
+  when: prometheus_node_exporter.start_on_boot

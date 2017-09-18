@@ -68,3 +68,13 @@ Simply include role in your playbook
   roles:
     - role: sansible.prometheus_node_exporter
 ```
+
+```YAML
+- name: Install and configure prometheus_node_exporter and enable start on boot.
+  hosts: "somehost"
+
+  roles:
+    - role: sansible.prometheus_node_exporter
+      prometheus_node_exporter:
+        start_on_boot: yes
+```

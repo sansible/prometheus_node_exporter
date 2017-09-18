@@ -1,6 +1,11 @@
 ---
 
-- name: Install Prometheus
+- name: Install Prometheus Node Exporter
   include: build.yml
   tags:
     - build
+
+- name: Configure Prometheus Node Exporter
+  include: configure.yml
+  tags:
+    - configure

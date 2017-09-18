@@ -14,6 +14,8 @@
 
   roles:
     - role: sansible.prometheus_node_exporter
+      prometheus_node_exporter:
+        start_on_boot: yes
 
   post_tasks:
     - name: Get Prometheus Node Exporter service state
