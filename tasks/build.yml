@@ -64,10 +64,8 @@
     mode: 0775
     src: prometheus_node_exporter.sysvinit.j2
 
-- name: Make Prometheus Node Exporter service start on boot
+- name: Enable Prometheus Node Exporter service
   become: yes
   service:
     name: prometheus-node-exporter
-    enabled: yes
-    state: started
-  when: prometheus_node_exporter.start_on_boot
+    enabled: "{{ prometheus_node_exporter.start_on_boot }}"
